@@ -23,7 +23,7 @@ const Layout = ({ children, data }) => (
     <div
       style={{
         margin: "0 auto",
-        maxWidth: 980,
+        maxWidth: 1080,
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -36,7 +36,7 @@ const Layout = ({ children, data }) => (
         <div
           style={{
             margin: "0 auto",
-            maxWidth: 980,
+            maxWidth: 1080,
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
