@@ -1,0 +1,240 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><link rel="preload" href="/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js" as="script"/><link rel="preload" href="/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js" as="script"/><link rel="preload" href="/blog/path---serverless-aws-e7fce611b1d63b808e89.js" as="script"/><link rel="preload" href="/blog/app-470f32dd49c23d29b34d.js" as="script"/><link rel="preload" href="/blog/commons-5a98e6e60a10e1028b17.js" as="script"/><title data-react-helmet="true">STA - Building simple Serverless Back-end using AWS (DynamoDB, Lambda , API Gateway)</title><meta data-react-helmet="true" name="description" content="Farmin Blog Site"/><meta data-react-helmet="true" name="keywords" content="farmin, blog"/><style id="gatsby-inlined-css">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:112.5%/1.45em georgia,serif;box-sizing:border-box;overflow-y:scroll}*,:after,:before{box-sizing:inherit}body{color:rgba(0,0,0,.8);font-family:georgia,serif;font-weight:400;word-wrap:break-word;-webkit-font-kerning:normal;font-kerning:normal;-ms-font-feature-settings:"kern","liga","clig","calt";-webkit-font-feature-settings:"kern","liga","clig","calt";font-feature-settings:"kern","liga","clig","calt","kern"}img{max-width:100%;margin:0 0 1.45rem;padding:0}h1{font-size:2.25rem}h1,h2{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h2{font-size:1.62671rem}h3{font-size:1.38316rem}h3,h4{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h4{font-size:1rem}h5{font-size:.85028rem}h5,h6{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h6{font-size:.78405rem}hgroup{margin:0 0 1.45rem;padding:0}ol,ul{margin:0 0 1.45rem 1.45rem;padding:0;list-style-position:outside;list-style-image:none}dd,dl,figure,p{margin:0 0 1.45rem;padding:0}pre{padding:0;font-size:.85rem;line-height:1.42;background:rgba(0,0,0,.04);border-radius:3px;overflow:auto;word-wrap:normal;padding:1.45rem}pre,table{margin:0 0 1.45rem}table{padding:0;font-size:1rem;line-height:1.45rem;border-collapse:collapse;width:100%}fieldset{margin:0 0 1.45rem;padding:0}blockquote{margin:0 1.45rem 1.45rem;padding:0}form,iframe,noscript{margin:0 0 1.45rem;padding:0}hr{margin:0 0 calc(1.45rem - 1px);padding:0;background:rgba(0,0,0,.2);border:none;height:1px}address{margin:0 0 1.45rem;padding:0}b,dt,strong,th{font-weight:700}li{margin-bottom:.725rem}ol li,ul li{padding-left:0}li>ol,li>ul{margin-left:1.45rem;margin-bottom:.725rem;margin-top:.725rem}blockquote :last-child,li :last-child,p :last-child{margin-bottom:0}li>p{margin-bottom:.725rem}code,kbd,samp{font-size:.85rem;line-height:1.45rem}abbr,abbr[title],acronym{border-bottom:1px dotted rgba(0,0,0,.5);cursor:help}abbr[title]{text-decoration:none}td,th,thead{text-align:left}td,th{border-bottom:1px solid rgba(0,0,0,.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding:.725rem .96667rem calc(.725rem - 1px)}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}code,tt{background-color:rgba(0,0,0,.04);border-radius:3px;font-family:SFMono-Regular,Consolas,Roboto Mono,Droid Sans Mono,Liberation Mono,Menlo,Courier,monospace;padding:0;padding-top:.2em;padding-bottom:.2em}pre code{background:none;line-height:1.42}code:after,code:before,tt:after,tt:before{letter-spacing:-.2em;content:" "}pre code:after,pre code:before,pre tt:after,pre tt:before{content:""}@media only screen and (max-width:480px){html{font-size:100%}}*{background:#f5f5f5;color:#000}body,html{height:100%}body{padding:20px}h1{font-size:1.5rem}div,p{font-size:16px}div.blog-post-preview{border-bottom:2px solid #e6e6e6;padding-top:1rem;padding-bottom:1rem;margin-bottom:1rem}h1>*{font-size:1.2rem;-webkit-text-decoration-line:none;text-decoration-line:none}h2{font-size:.8rem!important;font-weight:100!important}</style></head><body><div id="___gatsby"><div data-reactroot="" data-reactid="1" data-react-checksum="230887641"><!-- react-empty: 2 --><div style="background:#f5f5f5;margin-bottom:3rem;border-bottom:2px solid #e6e6e6;" data-reactid="3"><div style="margin:0 auto;max-width:1080px;padding:1.45rem 1.0875rem;" data-reactid="4"><h1 style="margin:0;text-align:center;font-size:18px;" data-reactid="5"><a style="color:black;text-decoration:none;" href="/blog/" data-reactid="6">Spare Time Adventures</a></h1></div></div><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;" data-reactid="7"><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;padding:25px;" data-reactid="8"><div style="flex:1;" data-reactid="9"><div class="blog-post-container" data-reactid="10"><!-- react-empty: 11 --><div class="blog-post" data-reactid="12"><h1 data-reactid="13">Building simple Serverless Back-end using AWS (DynamoDB, Lambda , API Gateway)</h1><div class="blog-post-content" data-reactid="14"><p>I had a small project in which I needed to send the data from a sensor to AWS IoT and then store it on a database. As I had enough knowledge over DynamoDB, I decided to store it on Dynamo and then I visualized the data using elasticSearch and Kibana. In fact that wasn’t bad idea but after sometime I found out that Kibana is very basic and it doesn’t fulfill all of the requirements.
+So I decided to implement my web app but before that I had to have the data already exposed with some API to consume it in my web app. Therefore I decided to use other services of Amazon to accomplish this task 🙂
+As I already said, I had my data on a table of DynamoDB and of course I needed API Gateway for exposing it (either HTTP or HTTPS) but then I couldn’t find any solution to execute a query from API Gateway on the DynamoDB. Therefore I used Lambda functions to do that for me and it was successful and in fact it has a good performance on response.
+My DynamoDB data architecture is simple as this:</p>
+<pre><code class="language-json">{
+“device_id”: “d_1”,
+“payload”: {
+“button_1”: true,
+“button_2”: true,
+“button_3”: true,
+“button_4”: true
+},
+“timestamp”: 1487240559
+}
+</code></pre>
+<p>In that I have “device_id” as primary key and “timestamp” as a sort key.</p>
+<p>For designing my Rest API I had to know which combination of data I needed so I could implement my Lambda and API gateway calls based on that.
+In my web app I needed to have a last state of all buttons on specific device and also a specific button. In addition I wanted to have a historic data for each button too.</p>
+<ul>
+<li>For getting last record on all buttons of a device: <code>$API_BASE_URL/{device_id}</code></li>
+<li>For getting last state of a specific button: <code>$API_BASE_URL/{device_id}/{button_id}</code></li>
+<li>For getting last states of a specific button between two timestamp (historic data – xxx would be timestamp in millisecond of 10 digits): <code>$API_BASE_URL/{device_id}/{button_id}?from_ts=xxx&#x26;to_ts=xxx</code></li>
+</ul>
+<p>We start with API gateway… let’s create new API and name it whatever you want. Then create a resource and name it “device” and in the resource path write “{device}” so later when you put the name of device id in the URL it can understand it as a parameter. afterwards, create a method under device resource and choose “GET”. it will create a method and you see the four boxes related to the implementation of method. ok now we created an empty API for our first path
+let’s create another resource for our second and third path. We can have together in one API since the path is the same and just URL parameters are different.
+Create a resource and name it “button” and in the path write “{button}”. after that create a method and again choose “GET”. (Of course we can use a Post for historic part and send our parameter in the body of POST but for sake of simplicity we do it with GET)</p>
+<p>Now, before doing the configuration of out APIs let’s go to Lambda service and create our functions. So in the Lambda service create two functions, one for our “device” API and one for our “button” and name whatever you want (I named them api<em>device and api</em>button). In the step by step creation part, choose blank function and no trigger, then name the function and choose “Nodejs” for run-time (I write normally in Nodejs but if you want of course you can write in other available run-time languages too). Also, take into account that you need to choose a role which has a permission to run the lambda function plus reading the dynamoDB. The other configuration are OK by default (I always increase the timeout too so if it takes time I don’t get any error)</p>
+<p>Let’s get back to our API Gateway… now we configure both of the APIs in the way that they call the specific Lambda function and send the URL parameters as the function parameters to Lambda so we can run the query based on the parameter and respond back to API Gateway the result of the query.</p>
+<p>So for the both API do this: on the GET method, choose “Integration Request” and then inside that, choose “Lambda function” as integration type then you should choose the dedicated lambda function which we have created for that API and hit apply. The important part is for both of them we need a configuration to send the URL parameters and query to Lambda function, therefore on the bottom of the page there is a section called “body mapping”, inside that we add “application/json” and under that it gives us a blank text body. so copy and paste below code there.</p>
+<pre><code class="language-json">{
+  "body" : $input.json('$'),
+  "headers": {
+    #foreach($header in $input.params().header.keySet())
+    "$header": "$util.escapeJavaScript($input.params().header.get($header))"
+    #if($foreach.hasNext),#end
+
+    #end
+  },
+  "method": "$context.httpMethod",
+  "params": {
+    #foreach($param in $input.params().path.keySet())
+    "$param": "$util.escapeJavaScript($input.params().path.get($param))"
+    #if($foreach.hasNext),#end
+
+    #end
+  },
+  "query": {
+    #foreach($queryParam in $input.params().querystring.keySet())
+    "$queryParam": "$util.escapeJavaScript($input.params().querystring.get($queryParam))"
+    #if($foreach.hasNext),#end
+
+    #end
+  }
+}
+</code></pre>
+<p>What we do in this code is, we pass whatever our call has including header (headers), parameters (params) and url queries (query) to the lambda function as a parameter.</p>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/serverless-aws-1-995584f458724aae9edf5001a5632c17-50630.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 94.45255474452554%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe9LQoSCgf/EABcQAAMBAAAAAAAAAAAAAAAAAAAQESD/2gAIAQEAAQUC1CL/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAaEAEBAAMBAQAAAAAAAAAAAAABABEhUWGR/9oACAEBAAE/IcEDwt8LLb9+RAsIv//aAAwDAQACAAMAAAAQkAcA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAMAAgMAAAAAAAAAAAAAAQARMVGBIUFx/9oACAEBAAE/EFLoLmFu+SjkQMvouDy7Q1u/TEHkgOENDXM//9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="serverless aws 1"
+        title=""
+        src="/static/serverless-aws-1-995584f458724aae9edf5001a5632c17-f8fb9.jpg"
+        srcset="/static/serverless-aws-1-995584f458724aae9edf5001a5632c17-e8976.jpg 148w,
+/static/serverless-aws-1-995584f458724aae9edf5001a5632c17-63df2.jpg 295w,
+/static/serverless-aws-1-995584f458724aae9edf5001a5632c17-f8fb9.jpg 590w,
+/static/serverless-aws-1-995584f458724aae9edf5001a5632c17-50630.jpg 685w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/serverless-aws-2-995584f458724aae9edf5001a5632c17-50630.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 94.45255474452554%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe9LQoSCgf/EABcQAAMBAAAAAAAAAAAAAAAAAAAQESD/2gAIAQEAAQUC1CL/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAaEAEBAAMBAQAAAAAAAAAAAAABABEhUWGR/9oACAEBAAE/IcEDwt8LLb9+RAsIv//aAAwDAQACAAMAAAAQkAcA/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHBABAAMAAgMAAAAAAAAAAAAAAQARMVGBIUFx/9oACAEBAAE/EFLoLmFu+SjkQMvouDy7Q1u/TEHkgOENDXM//9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="serverless aws 2"
+        title=""
+        src="/static/serverless-aws-2-995584f458724aae9edf5001a5632c17-f8fb9.jpg"
+        srcset="/static/serverless-aws-2-995584f458724aae9edf5001a5632c17-e8976.jpg 148w,
+/static/serverless-aws-2-995584f458724aae9edf5001a5632c17-63df2.jpg 295w,
+/static/serverless-aws-2-995584f458724aae9edf5001a5632c17-f8fb9.jpg 590w,
+/static/serverless-aws-2-995584f458724aae9edf5001a5632c17-50630.jpg 685w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<p>Great! we have our API ready to deploy but before that let’s write our Lambda functions too…</p>
+<p>Open the first Lambda function and write your code to query the DynamoDB and return the result including last state of the buttons related to the device that has been passed through parameter of the function. Mine came out like below:</p>
+<pre><code class="language-js">var doc = require('dynamodb-doc')
+var dynamo = new doc.DynamoDB()
+
+// Main function
+exports.handler = (event, context, callback) => {
+  // get device name from event
+  var device = event.params.device
+
+  //params for query last record of a device
+  var params = {
+    TableName: 'YOUR DYNAMODB TABLE NAME',
+    KeyConditionExpression: 'device_id = :device ',
+    ExpressionAttributeValues: { ':device': device },
+    ScanIndexForward: false,
+    Limit: 1,
+  }
+  // Run the query
+  dynamo.query(params, function(err, data) {
+    if (err) {
+      console.error('Unable to query. Error:', JSON.stringify(err, null, 2))
+    } else {
+      console.log('Query succeeded.')
+      // respond to API
+      callback(null, data.Items[0])
+    }
+  })
+}
+</code></pre>
+<p>As you can see I could receive the device name in url as event of the function in the “event.params.device” path and then I run the query in which I choose all record that “device_id” is “{device}” and I limit it to one record so by default it returns the last one since it is Descending.
+This one actually was simpler than second one. In second one I need to respond in two different ways.</p>
+<ol>
+<li>return just the last state of the button if there is no “from<em>ts” or “to</em>ts”</li>
+<li>In case of having “from<em>ts” and “to</em>ts” in the query params, return all records between “from<em>ts” and “to</em>ts”</li>
+</ol>
+<p>So my code look like this:</p>
+<pre><code class="language-js">var doc = require('dynamodb-doc')
+var dynamo = new doc.DynamoDB()
+
+// Main Function
+exports.handler = (event, context, callback) => {
+  // default values for from and to
+  var from = 0
+  var to = 0
+  // Getting url query for From and To
+  if (event.query.from_ts !== undefined) {
+    from = parseInt(event.query.from_ts)
+  }
+  if (event.query.to_ts !== undefined) {
+    to = parseInt(event.query.to_ts)
+  }
+  //getting url parameters for device and machine
+  var device = event.params.device
+  var button = event.params.button
+
+  //if there is no from and to: params for query last record of a device
+  if (from === 0 || to === 0) {
+    var params = {
+      TableName: 'YOUR DYNAMO TABLE NAME',
+      KeyConditionExpression: 'device_id = :device',
+      ExpressionAttributeValues: {
+        ':device': device,
+      },
+      ScanIndexForward: false,
+      Limit: 1,
+    }
+    // if there is from and to: respond all records between from and to
+  } else {
+    var params = {
+      TableName: 'YOUR DYNAMO TABLE NAME',
+      KeyConditionExpression:
+        'device_id = :device AND #ts between :from and :to',
+      ExpressionAttributeValues: {
+        ':device': device,
+        ':from': from,
+        ':to': to,
+      },
+      ExpressionAttributeNames: {
+        '#ts': 'timestamp',
+      },
+      ScanIndexForward: false,
+    }
+  }
+  // Run the query
+  dynamo.query(params, function(err, data) {
+    if (err) {
+      console.error('Unable to query. Error:', JSON.stringify(err, null, 2))
+    } else {
+      console.log('Query succeeded.')
+      var result = []
+      data.Items.forEach(function(item) {
+        var obj = { [button]: item.payload[button], timestamp: item.timestamp }
+        result.push(obj)
+      })
+      //result.push(event.query)
+      callback(null, result)
+    }
+  })
+}
+</code></pre>
+<p>Great now we can test our APIs to see if they are working properly or not.
+Go to API Gateway again and open your GET method, on the left side you can see “TEST” button, click on it and fill the “device” text box with the device ID or whatever you have in your DB…. perfect it responds 200 and this :</p>
+<pre><code class="language-json">{
+  "payload": {
+    "button_2": true,
+    "button_1": true,
+    "button_4": true,
+    "button_3": true
+  },
+  "device_id": "d_1",
+  "timestamp": 1489044911
+}
+</code></pre>
+<p>I tested also the other one and it worked perfectly…</p>
+<p>So after this little implementation, I can have my web app calling the API easily… I just need to Deploy my api and use the url. Of course I would try to put some authentication on it too 🙂</p></div></div></div></div></div></div></div></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-470f32dd49c23d29b34d.js","107818501498521":"component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","162898551421021":"component---src-pages-404-js-4503918ea3a16cfcdb75.js","35783957827783":"component---src-pages-index-js-0e7887491c4f284e066f.js","218538773642512":"component---src-pages-page-2-js-65f0147ecb0dc4da2a2b.js","60335399758886":"path----55c5d871200ea0553d87.js","242960317512950":"path---docker-node-1b23d78858d3daff1679.js","229854666947949":"path---serverless-aws-e7fce611b1d63b808e89.js","94803894866459":"path---sensehat-react-a90460329a0a5b9d170b.js","60135101834148":"path---sensehat-dashboard-2-60b4f1e108135ec80940.js","116538559223856":"path---sensehat-dashboard-1-8dc421eb67e4e4a82a78.js","179064064692867":"path---elasticserach-kibana-e8e96985e5f38702dbea.js","224231219391557":"path---sensehat-aws-iot-66ddecb9fde95253a8ed.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","142629428675168":"path---index-eea85d5ff0838326e381.js","135728916539164":"path---page-2-a0e39f21c11f6a62c5ab.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-4f94b4340e387a38fc90.js"}/*]]>*/</script><script>/*<![CDATA[*/["/blog/commons-5a98e6e60a10e1028b17.js","/blog/app-470f32dd49c23d29b34d.js","/blog/path---serverless-aws-e7fce611b1d63b808e89.js","/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>

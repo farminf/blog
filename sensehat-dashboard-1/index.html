@@ -1,0 +1,188 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><link rel="preload" href="/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js" as="script"/><link rel="preload" href="/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js" as="script"/><link rel="preload" href="/blog/path---sensehat-dashboard-1-8dc421eb67e4e4a82a78.js" as="script"/><link rel="preload" href="/blog/app-470f32dd49c23d29b34d.js" as="script"/><link rel="preload" href="/blog/commons-5a98e6e60a10e1028b17.js" as="script"/><title data-react-helmet="true">STA - Building a simple Dashboard for Sense HAT using Python, MongoDB, NodeJS and AngularJS (part 1 – API)</title><meta data-react-helmet="true" name="description" content="Farmin Blog Site"/><meta data-react-helmet="true" name="keywords" content="farmin, blog"/><style id="gatsby-inlined-css">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:112.5%/1.45em georgia,serif;box-sizing:border-box;overflow-y:scroll}*,:after,:before{box-sizing:inherit}body{color:rgba(0,0,0,.8);font-family:georgia,serif;font-weight:400;word-wrap:break-word;-webkit-font-kerning:normal;font-kerning:normal;-ms-font-feature-settings:"kern","liga","clig","calt";-webkit-font-feature-settings:"kern","liga","clig","calt";font-feature-settings:"kern","liga","clig","calt","kern"}img{max-width:100%;margin:0 0 1.45rem;padding:0}h1{font-size:2.25rem}h1,h2{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h2{font-size:1.62671rem}h3{font-size:1.38316rem}h3,h4{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h4{font-size:1rem}h5{font-size:.85028rem}h5,h6{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h6{font-size:.78405rem}hgroup{margin:0 0 1.45rem;padding:0}ol,ul{margin:0 0 1.45rem 1.45rem;padding:0;list-style-position:outside;list-style-image:none}dd,dl,figure,p{margin:0 0 1.45rem;padding:0}pre{padding:0;font-size:.85rem;line-height:1.42;background:rgba(0,0,0,.04);border-radius:3px;overflow:auto;word-wrap:normal;padding:1.45rem}pre,table{margin:0 0 1.45rem}table{padding:0;font-size:1rem;line-height:1.45rem;border-collapse:collapse;width:100%}fieldset{margin:0 0 1.45rem;padding:0}blockquote{margin:0 1.45rem 1.45rem;padding:0}form,iframe,noscript{margin:0 0 1.45rem;padding:0}hr{margin:0 0 calc(1.45rem - 1px);padding:0;background:rgba(0,0,0,.2);border:none;height:1px}address{margin:0 0 1.45rem;padding:0}b,dt,strong,th{font-weight:700}li{margin-bottom:.725rem}ol li,ul li{padding-left:0}li>ol,li>ul{margin-left:1.45rem;margin-bottom:.725rem;margin-top:.725rem}blockquote :last-child,li :last-child,p :last-child{margin-bottom:0}li>p{margin-bottom:.725rem}code,kbd,samp{font-size:.85rem;line-height:1.45rem}abbr,abbr[title],acronym{border-bottom:1px dotted rgba(0,0,0,.5);cursor:help}abbr[title]{text-decoration:none}td,th,thead{text-align:left}td,th{border-bottom:1px solid rgba(0,0,0,.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding:.725rem .96667rem calc(.725rem - 1px)}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}code,tt{background-color:rgba(0,0,0,.04);border-radius:3px;font-family:SFMono-Regular,Consolas,Roboto Mono,Droid Sans Mono,Liberation Mono,Menlo,Courier,monospace;padding:0;padding-top:.2em;padding-bottom:.2em}pre code{background:none;line-height:1.42}code:after,code:before,tt:after,tt:before{letter-spacing:-.2em;content:" "}pre code:after,pre code:before,pre tt:after,pre tt:before{content:""}@media only screen and (max-width:480px){html{font-size:100%}}*{background:#f5f5f5;color:#000}body,html{height:100%}body{padding:20px}h1{font-size:1.5rem}div,p{font-size:16px}div.blog-post-preview{border-bottom:2px solid #e6e6e6;padding-top:1rem;padding-bottom:1rem;margin-bottom:1rem}h1>*{font-size:1.2rem;-webkit-text-decoration-line:none;text-decoration-line:none}h2{font-size:.8rem!important;font-weight:100!important}</style></head><body><div id="___gatsby"><div data-reactroot="" data-reactid="1" data-react-checksum="-1635915806"><!-- react-empty: 2 --><div style="background:#f5f5f5;margin-bottom:3rem;border-bottom:2px solid #e6e6e6;" data-reactid="3"><div style="margin:0 auto;max-width:1080px;padding:1.45rem 1.0875rem;" data-reactid="4"><h1 style="margin:0;text-align:center;font-size:18px;" data-reactid="5"><a style="color:black;text-decoration:none;" href="/blog/" data-reactid="6">Spare Time Adventures</a></h1></div></div><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;" data-reactid="7"><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;padding:25px;" data-reactid="8"><div style="flex:1;" data-reactid="9"><div class="blog-post-container" data-reactid="10"><!-- react-empty: 11 --><div class="blog-post" data-reactid="12"><h1 data-reactid="13">Building a simple Dashboard for Sense HAT using Python, MongoDB, NodeJS and AngularJS (part 1 – API)</h1><div class="blog-post-content" data-reactid="14"><p>Having a Sense HAT with environmental sensors like temperature, humidity and pressure is nice and it is easy to read their values with a simple Python code. However, it would be nicer if we can bring all of them on the same page beside each other and have some historic data of them or even having other information related to Internet APIs like weather.So I decided to build a dashboard to show the sensors data of my Sense HAT plus putting some charts to see the data of last days.</p>
+<p>First of all I needed an API for getting the data and saving it in a database and exposing it for my web application. In this way I could consume my data in whatever way that I like, I can use it in my web application or even build a mobile app or anything. Therefore, I chose nodejs and expressJS to build my HTTP Rest API application and MongoDB as a database since it is really easy, light and it’s non relational DB.</p>
+<blockquote>
+<p><em>Note:complete project <a href="https://github.com/farminf/sensehat-api">sensehat API</a> is on GitHub and you can clone it.</em></p>
+</blockquote>
+<p>Before anything I need to install MongoDB, node and npm on my Raspberry then I can start the implementation part.</p>
+<h3>MongoDB</h3>
+<pre><code class="language-bash">sudo apt-get install mongodb-server
+sudo service mongod start
+</code></pre>
+<h3>Node and npm</h3>
+<pre><code class="language-bash">curl -sL https://deb.nodesource.com/setup_5.x | sudo bash –
+apt-get install nodejs -y
+</code></pre>
+<h3>Mongoose and ExpressJS</h3>
+<p>Mongoose is basically a npm library to connect to Mongo for reading and writing data.</p>
+<pre><code class="language-bash">npm install mongoose
+</code></pre>
+<p>For implementing the HTTP restful API I use Express library</p>
+<pre><code class="language-bash">npm install express
+</code></pre>
+<p>Now that I have the tools I need I can start implementing my API app but before that I should decide my api architecture.On one hand I need to save the data that comes from Sesne HAT and on the other hand I need to expose the data to my Dashboard.</p>
+<p>For saving the data, I can POST from Sense HAT with a python script every interval of time and for exposing data to my dashboard I can have one call for giving all sensor names, one for last value of each sensor (for current status) and one for last x number of values (I chose 300 because if I send every 2 minutes a value, then I can have last 10 hours) related to each sensor (for chart).</p>
+<ol>
+<li>POST /sensehat , for sending from Python script</li>
+<li>GET /sensehat , for getting all sensor names</li>
+<li>GET /sensehat/$sensor_name , getting last value of $sensor</li>
+<li>GET /sensehat/$sensor_name/historic , getting last 300 values of $sensor</li>
+<li>DELETE /sensehat/deleteall , to delete all data</li>
+</ol>
+<p>I also decide my data string that I want to send from Sense HAT python script so I can make my responds. I try to be as simple as possible.</p>
+<h5>MY DATA STRING</h5>
+<pre><code class="language-json">{
+    ensor: “#name_of_sensor”,
+    value: “value_of_sensor”,
+    timestamp: “timestamp_in_millisecond_unix_format”
+}
+</code></pre>
+<h2>Implementation</h2>
+<p>I’m not going to explain in details how to program in nodejs and just try to explain the important part. My project <a href="https://github.com/farminf/sensehat-api">sensehat API</a> is on GitHub and you can clone it.</p>
+<p>First of all, I define my database schema to accept just the format of my json string that I send.</p>
+<pre><code class="language-js">var mongoose = require(‘mongoose’);
+
+var SensehatSchema = new mongoose.Schema({
+sensor: String,
+value: Number,
+timestamp: Number
+});
+
+module.exports = mongoose.model(‘Sensehat’, SensehatSchema);
+</code></pre>
+<p>Then I implemen the part that it connects to my MongoDB inside <code>app.js</code> file</p>
+<pre><code class="language-js">var mongoose = require(‘mongoose’);
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(‘mongodb://localhost/sensehat-dashboard’)
+.then(() => console.log(‘connection to mongo was succesful’))
+.catch((err) => console.error(err));
+</code></pre>
+<p>Then I define my express library in app.js file and give the api root link and route file to implement my API routes.</p>
+<pre><code class="language-js">var express = require(‘express’);
+
+var sensehat = require(‘./routes/sensehat’);
+//this is path to my route file
+
+var app = express();
+
+app.use(‘/sensehat’, sensehat);
+</code></pre>
+<p>I create a file in the path /routes and name it sensehat.js and I implement my API POST and GET in this file.</p>
+<pre><code class="language-js">var express = require(‘express’);
+var router = express.Router();
+
+var SensehatMongo = require(‘../models/Sensehat.js’);
+//This is where my mongo schema is
+
+/* GET /sensehat listing. */
+router.get(‘/’, function(req, res, next) {
+SensehatMongo.find().distinct(‘sensor’, function(err, sensehat){
+if (err) return next(err);
+res.header(‘Access-Control-Allow-Headers’, ‘Content-Type’);
+res.header(‘Access-Control-Allow-Headers’, ‘*’);
+res.header(‘Access-Control-Allow-Origin’, ‘*’);
+res.json(sensehat);
+});
+});
+
+/* POST /sensehat */
+router.post(‘/’, function(req, res, next) {
+SensehatMongo.create(req.body, function (err, post) {
+if (err) return next(err);
+res.header(‘Access-Control-Allow-Headers’, ‘Content-Type’);
+res.header(‘Access-Control-Allow-Headers’, ‘*’);
+res.header(‘Access-Control-Allow-Origin’, ‘*’);
+res.json(post);
+});
+});
+
+/* GET /sensehat/sensor_name */
+router.get(‘/:sensor’, function(req, res, next) {
+SensehatMongo.findOne({
+    “sensor” : req.params.sensor},
+    {},
+    { sort: { ‘timestamp’ : -1 } },
+    function (err, post) {
+        if (err) return next(err);
+        res.header(‘Access-Control-Allow-Headers’, ‘Content-Type’);
+        res.header(‘Access-Control-Allow-Headers’, ‘*’);
+        res.header(‘Access-Control-Allow-Origin’, ‘*’);
+        res.json(post);
+    });
+});
+
+/* GET /sensehat/sensor_name/historic */
+router.get(‘/:sensor/historic’, function(req, res, next) {
+SensehatMongo.find
+    ({
+        “sensor” : req.params.sensor
+    },
+    {},
+    { sort: { ‘timestamp’ : -1 } , limit : 300},
+    function (err, post) {
+        if (err) return next(err);
+        res.header(‘Access-Control-Allow-Origin’, ‘*’);
+        res.json(post);
+    });
+});
+/* DELETE ALL /sensehat/deleteall */
+router.delete(‘/deleteall’, function(req, res, next) {
+SensehatMongo.remove({ }, function (err, post) {
+if (err) return next(err);
+res.json(post);
+});
+});
+
+/* DELETE an Item /sensehat/:id */
+router.delete(‘/:id’, function(req, res, next) {
+SensehatMongo.findByIdAndRemove(
+    req.params.id, req.body, function (err, post) {
+if (err) return next(err);
+res.json(post);
+});
+});
+
+module.exports = router;
+</code></pre>
+<p>Now it is time to test our API, let’s go to root folder of the node project and do npm start.</p>
+<p>I do my tests with Postman, chrome plugin which I really like but before POST anything if I browse to <a href="http://localhost:3000/sensehat">http://localhost:3000/sensehat</a> it should respond with empty array since we did not have any record in Mongo.</p>
+<p>let’s post a fake string to save in Mongo like <code>{“sensor”:”temperature” , “value” : 22 , “timestamp”: 1476375087912}</code>.</p>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/sensehat-dashboard-api-1-657ca1d8c512ccae8ba2aa8262877185-3492b.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 26.057142857142857%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAFABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3aAH/8QAFRABAQAAAAAAAAAAAAAAAAAAABH/2gAIAQEAAQUCRI//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAEBAQEAAAAAAAAAAAAAAAABEQAh/9oACAEBAAE/IZuiPcAQIb//2gAMAwEAAgADAAAAEIAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGRABAQEAAwAAAAAAAAAAAAAAAREAIUGh/9oACAEBAAE/ECwb5kpEPCTHTAQDrf/Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="sensehat dashboard api 1"
+        title=""
+        src="/static/sensehat-dashboard-api-1-657ca1d8c512ccae8ba2aa8262877185-f8fb9.jpg"
+        srcset="/static/sensehat-dashboard-api-1-657ca1d8c512ccae8ba2aa8262877185-e8976.jpg 148w,
+/static/sensehat-dashboard-api-1-657ca1d8c512ccae8ba2aa8262877185-63df2.jpg 295w,
+/static/sensehat-dashboard-api-1-657ca1d8c512ccae8ba2aa8262877185-f8fb9.jpg 590w,
+/static/sensehat-dashboard-api-1-657ca1d8c512ccae8ba2aa8262877185-3492b.jpg 875w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<p>after getting successful respond, if I browse again to <a href="http://localhost:3000/sensehat">http://localhost:3000/sensehat</a>, I should get an array including “temperature” and if I browse to to <a href="http://localhost:3000/sensehat/temperature">http://localhost:3000/sensehat/temperature</a>, I should see my json string. If I post more data, it should just show me the last one and instead <a href="http://localhost:3000/sensehat/temperature/histroric">http://localhost:3000/sensehat/temperature/histroric</a> will respond 300 json objects including all fields in an array.</p>
+<p>you can also test the other API calls to make sure everything is working…</p>
+<p>So now we have our API server app ready, I just need to make my Python script ready to post data to my API server and then I will build my dashboard consuming gathered data.</p>
+<p>In next post, I do the Python Script part…</p></div></div></div></div></div></div></div></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-470f32dd49c23d29b34d.js","107818501498521":"component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","162898551421021":"component---src-pages-404-js-4503918ea3a16cfcdb75.js","35783957827783":"component---src-pages-index-js-0e7887491c4f284e066f.js","218538773642512":"component---src-pages-page-2-js-65f0147ecb0dc4da2a2b.js","60335399758886":"path----55c5d871200ea0553d87.js","242960317512950":"path---docker-node-1b23d78858d3daff1679.js","229854666947949":"path---serverless-aws-e7fce611b1d63b808e89.js","94803894866459":"path---sensehat-react-a90460329a0a5b9d170b.js","60135101834148":"path---sensehat-dashboard-2-60b4f1e108135ec80940.js","116538559223856":"path---sensehat-dashboard-1-8dc421eb67e4e4a82a78.js","179064064692867":"path---elasticserach-kibana-e8e96985e5f38702dbea.js","224231219391557":"path---sensehat-aws-iot-66ddecb9fde95253a8ed.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","142629428675168":"path---index-eea85d5ff0838326e381.js","135728916539164":"path---page-2-a0e39f21c11f6a62c5ab.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-4f94b4340e387a38fc90.js"}/*]]>*/</script><script>/*<![CDATA[*/["/blog/commons-5a98e6e60a10e1028b17.js","/blog/app-470f32dd49c23d29b34d.js","/blog/path---sensehat-dashboard-1-8dc421eb67e4e4a82a78.js","/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>

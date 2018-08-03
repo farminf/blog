@@ -1,0 +1,668 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><link rel="preload" href="/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js" as="script"/><link rel="preload" href="/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js" as="script"/><link rel="preload" href="/blog/path---sensehat-react-a90460329a0a5b9d170b.js" as="script"/><link rel="preload" href="/blog/app-470f32dd49c23d29b34d.js" as="script"/><link rel="preload" href="/blog/commons-5a98e6e60a10e1028b17.js" as="script"/><title data-react-helmet="true">STA - Building a Simple Dashboard for Raspberry Pi SenseHat using Python, React and Bootstrap</title><meta data-react-helmet="true" name="description" content="Farmin Blog Site"/><meta data-react-helmet="true" name="keywords" content="farmin, blog"/><style id="gatsby-inlined-css">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:112.5%/1.45em georgia,serif;box-sizing:border-box;overflow-y:scroll}*,:after,:before{box-sizing:inherit}body{color:rgba(0,0,0,.8);font-family:georgia,serif;font-weight:400;word-wrap:break-word;-webkit-font-kerning:normal;font-kerning:normal;-ms-font-feature-settings:"kern","liga","clig","calt";-webkit-font-feature-settings:"kern","liga","clig","calt";font-feature-settings:"kern","liga","clig","calt","kern"}img{max-width:100%;margin:0 0 1.45rem;padding:0}h1{font-size:2.25rem}h1,h2{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h2{font-size:1.62671rem}h3{font-size:1.38316rem}h3,h4{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h4{font-size:1rem}h5{font-size:.85028rem}h5,h6{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h6{font-size:.78405rem}hgroup{margin:0 0 1.45rem;padding:0}ol,ul{margin:0 0 1.45rem 1.45rem;padding:0;list-style-position:outside;list-style-image:none}dd,dl,figure,p{margin:0 0 1.45rem;padding:0}pre{padding:0;font-size:.85rem;line-height:1.42;background:rgba(0,0,0,.04);border-radius:3px;overflow:auto;word-wrap:normal;padding:1.45rem}pre,table{margin:0 0 1.45rem}table{padding:0;font-size:1rem;line-height:1.45rem;border-collapse:collapse;width:100%}fieldset{margin:0 0 1.45rem;padding:0}blockquote{margin:0 1.45rem 1.45rem;padding:0}form,iframe,noscript{margin:0 0 1.45rem;padding:0}hr{margin:0 0 calc(1.45rem - 1px);padding:0;background:rgba(0,0,0,.2);border:none;height:1px}address{margin:0 0 1.45rem;padding:0}b,dt,strong,th{font-weight:700}li{margin-bottom:.725rem}ol li,ul li{padding-left:0}li>ol,li>ul{margin-left:1.45rem;margin-bottom:.725rem;margin-top:.725rem}blockquote :last-child,li :last-child,p :last-child{margin-bottom:0}li>p{margin-bottom:.725rem}code,kbd,samp{font-size:.85rem;line-height:1.45rem}abbr,abbr[title],acronym{border-bottom:1px dotted rgba(0,0,0,.5);cursor:help}abbr[title]{text-decoration:none}td,th,thead{text-align:left}td,th{border-bottom:1px solid rgba(0,0,0,.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding:.725rem .96667rem calc(.725rem - 1px)}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}code,tt{background-color:rgba(0,0,0,.04);border-radius:3px;font-family:SFMono-Regular,Consolas,Roboto Mono,Droid Sans Mono,Liberation Mono,Menlo,Courier,monospace;padding:0;padding-top:.2em;padding-bottom:.2em}pre code{background:none;line-height:1.42}code:after,code:before,tt:after,tt:before{letter-spacing:-.2em;content:" "}pre code:after,pre code:before,pre tt:after,pre tt:before{content:""}@media only screen and (max-width:480px){html{font-size:100%}}*{background:#f5f5f5;color:#000}body,html{height:100%}body{padding:20px}h1{font-size:1.5rem}div,p{font-size:16px}div.blog-post-preview{border-bottom:2px solid #e6e6e6;padding-top:1rem;padding-bottom:1rem;margin-bottom:1rem}h1>*{font-size:1.2rem;-webkit-text-decoration-line:none;text-decoration-line:none}h2{font-size:.8rem!important;font-weight:100!important}</style></head><body><div id="___gatsby"><div data-reactroot="" data-reactid="1" data-react-checksum="-1935473680"><!-- react-empty: 2 --><div style="background:#f5f5f5;margin-bottom:3rem;border-bottom:2px solid #e6e6e6;" data-reactid="3"><div style="margin:0 auto;max-width:1080px;padding:1.45rem 1.0875rem;" data-reactid="4"><h1 style="margin:0;text-align:center;font-size:18px;" data-reactid="5"><a style="color:black;text-decoration:none;" href="/blog/" data-reactid="6">Spare Time Adventures</a></h1></div></div><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;" data-reactid="7"><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;padding:25px;" data-reactid="8"><div style="flex:1;" data-reactid="9"><div class="blog-post-container" data-reactid="10"><!-- react-empty: 11 --><div class="blog-post" data-reactid="12"><h1 data-reactid="13">Building a Simple Dashboard for Raspberry Pi SenseHat using Python, React and Bootstrap</h1><div class="blog-post-content" data-reactid="14"><p>These days the comparison between React and Angular2 is a very hot topic. I’ve seen some people build the dashboards on top of both and compare the features and basically the do pros and cons. So, I decided to the same thing for my SenseHat and see the result.</p>
+<p>I started to implement very light and easy API server using Python on my Raspberry just to respond the calls from dashboard. It doesn’t have any database or any historic data feature, It just gives the current value of Temperature, Humidity and pressure sensor of SenseHat and additionally it accept post for showing a text on SenseHat LED or make the LED colorful (Red, Green and Blue). I did the API part using flask , a python library which is awesome. For configuring and installing it and also getting familiar with flask, I found <a href="https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask">this beautiful tutorial</a> that explains everything and helped me a lot.</p>
+<p>I just implemented one file and you can find it on my GitHub <a href="https://github.com/farminf/sensehat-api-python">HERE</a></p>
+<p>As you can see I have implemented 3 functions to interact with my Dashboard (2 Gets and 1 Post).</p>
+<pre><code class="language-python">#!flask/bin/python
+import os
+from flask import Flask , jsonify , request
+from sense_hat import SenseHat
+from flask_cors import CORS, cross_origin
+
+
+
+app = Flask(__name__)
+CORS(app)
+
+sense = SenseHat()
+sense.clear()
+
+
+# get CPU temperature
+def get_cpu_temp():
+  res = os.popen("vcgencmd measure_temp").readline()
+  t = float(res.replace("temp=","").replace("'C\n",""))
+  return(t)
+
+@app.route('/api')
+def index():
+    return "try with '/ambient' "
+
+@app.route('/api/ambient', methods=['GET', 'OPTIONS'])
+def get_ambient_params():
+    t1 = sense.get_temperature_from_humidity()
+    t2 = sense.get_temperature_from_pressure()
+    t_cpu = get_cpu_temp()
+    t = (t1+t2)/2
+    temperature = t - ((t_cpu-t)/1.5)
+
+    humidity = sense.get_humidity()
+
+    pressure = sense.get_pressure()
+
+    return jsonify({
+        'temperature': temperature ,
+        'humidity': humidity ,
+        'pressure': pressure})
+
+@app.route('/api/led/&#x3C;rgb>', methods=['GET'])
+def set_led_color(rgb):
+    if rgb == 'red':
+        X = [255, 0, 0]  # Red
+    elif rgb == 'green':
+        X = [0, 255, 0]  # green
+    elif rgb == 'blue':
+        X = [0, 0, 255]  # blue
+    color = [
+        X, X, X, X, X, X, X, X,
+        X, X, X, X, X, X, X, X,
+        X, X, X, X, X, X, X, X,
+        X, X, X, X, X, X, X, X,
+        X, X, X, X, X, X, X, X,
+        X, X, X, X, X, X, X, X,
+        X, X, X, X, X, X, X, X,
+        X, X, X, X, X, X, X, X
+        ]
+    sense.set_pixels(color)
+    return jsonify({'success': True })
+
+@app.route('/api/led', methods=['POST'])
+def set_led_message():
+    if not request.json or not 'message' in request.json:
+        abort(400)
+    sense.show_message(
+        request.json["message"],
+        text_colour=[255, 255, 255])
+    return jsonify({'success': True })
+
+@app.route('/api/led/clear', methods=['GET'])
+def set_led_clear():
+    sense.clear()
+    return jsonify({'success': True })
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({'error': 'Not found'})
+
+if __name__ == '__main__':
+    app.run(debug=True,host='0.0.0.0')
+</code></pre>
+<p>OK so everything is ready to build a nice Dashboard and show some sensor data, wirte some data on LED and also play a little bit with React. I prepared an Skeleton for my React project so in this way every time I want to build a new Dashboard I don’t need to repeat and waste time to create my skeleton. you can find my skeleton app on my Github account –> <a href="https://github.com/farminf/react-skeleton">HERE</a></p>
+<p>So basically, after cloning, you just need to do ‘npm install’ and after downloading all modules, for running it, ‘npm start’. After starting, you should be able to see an empty page (simple navigation and empty container) on <a href="http://localhost:8080">http://localhost:8080</a>.</p>
+<p>I’ve put some components in the skeleton which later you see why I am using them and basically I can use this skeleton project anytime I want to build a dashboard. Briefly, I explain what skeleton project has:</p>
+<ol>
+<li>npm package file including all dependencies and scripts</li>
+<li>Webpack configuration file</li>
+<li>Router configuration in config folder which in any dashboard is extendable</li>
+<li>A service file using Axios for consuming Restful services in uitls folder</li>
+<li>Containers folder including the main views</li>
+<li>Components folder for all components (now there are some default wrappers and view containers)</li>
+</ol>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/sensehat-react-1-f550b4aeb67b316b9219c265c8a30805-f5b76.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 219px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 268.0365296803653%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAA2ABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAEDAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAH1VhoDOqdA4vGhQZUAP//EABoQAAIDAQEAAAAAAAAAAAAAAAABAhASITH/2gAIAQEAAQUCfDVSFUhKpCVSFUvVWEYRhH//xAAUEQEAAAAAAAAAAAAAAAAAAAAw/9oACAEDAQE/AQ//xAAUEQEAAAAAAAAAAAAAAAAAAAAw/9oACAECAQE/AQ//xAAXEAEBAQEAAAAAAAAAAAAAAAAAQUCR/9oACAEBAAY/AsVVev/EACAQAAEDBAIDAAAAAAAAAAAAAAEAEBEhMUGBUXGRofD/2gAIAQEAAT8hCU4QABrQuvttEC4lu2kC8QWuCE5LUJCKRpq0ghtch8l8iX//2gAMAwEAAgADAAAAEFDNPDPIPP/EABQRAQAAAAAAAAAAAAAAAAAAADD/2gAIAQMBAT8QD//EABQRAQAAAAAAAAAAAAAAAAAAADD/2gAIAQIBAT8QD//EACMQAQACAAUEAwEAAAAAAAAAAAEAERAhMUFRYYHB0ZGhsfD/2gAIAQEAAT8QPICtmVRK4qDYPM2HL+QDTm6+mCtC1WdSsVHthqDNFA+0wWQFb2QJdg7OCE0NNUnQXwwoVkrc+YXKjuPM/p7J/9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="sensehat react 1"
+        title=""
+        src="/static/sensehat-react-1-f550b4aeb67b316b9219c265c8a30805-f5b76.jpg"
+        srcset="/static/sensehat-react-1-f550b4aeb67b316b9219c265c8a30805-76fb0.jpg 148w,
+/static/sensehat-react-1-f550b4aeb67b316b9219c265c8a30805-f5b76.jpg 219w"
+        sizes="(max-width: 219px) 100vw, 219px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<p>So what do I want for my Dashboard? First thing I want a page just to show the current value of temperature, Humidity and Pressure. Then I want a page for showing them on the graph but not the historical one, I want real-time Dashboard. More, I want a page to play with the LED, so some buttons to change the color of LED and a form like element to send my string and show it on LED.</p>
+<p>So before starting let’s see how I can design the architecture of all components. The good thing about React is, we just need to write our components (widgets in our case) and then use them in one view or even use them in multiple view. Also, it is OK to copy them from one dashboard to other. In case of the update on any of this widgets, React will update only that widget and nothing. Note: there is this weird combination of the XML syntax and JS in one file which after working with react it’ll get normal, believe me 🙂</p>
+<p>before going to visualization part, let’s furnish our little service part which is the part we call the API. I prepare this with some functions and then inside each component I just import it and use the function that we need to call.
+(I renamed the helper.js to SensehatHelper.js)</p>
+<pre><code class="language-js">var axiosAPI = require('./axiosAPI')
+
+var helpers = {
+  getAmbientValues: function() {
+    return axiosAPI.get('/ambient').catch(function(err) {
+      console.warn('Error in getAmbientValues: ', err)
+    })
+  },
+  setLEDRGB: function(color) {
+    return axiosAPI.get('/led/' + color).catch(function(err) {
+      console.warn('Error in setLEDRGB: ', err)
+    })
+  },
+  setLEDMessage: function(message) {
+    return axiosAPI
+      .post('/led', {
+        message: message,
+      })
+      .catch(function(err) {
+        console.warn('Error in setLEDRGB: ', err)
+      })
+  },
+}
+
+module.exports = helpers
+</code></pre>
+<p>Ok, so I start implementing my router and then my navigation. In this way I always have my navigation on top and React is just updating the containers (views). I need 3 views, one for monitoring ( calling Ambient), one for controlling(Control) and one for charts (Chart). So I need to have something like this:</p>
+<pre><code class="language-js">var routes = (
+  &#x3C;Router history={hashHistory}>
+    &#x3C;Route path="/" component={Main}>
+      &#x3C;IndexRoute component={AmbientContainer} />
+      &#x3C;Route path="ambient" header="Ambient" component={AmbientContainer} />
+      &#x3C;Route path="control" header="Control" component={ControlContainer} />
+      &#x3C;Route path="chart" header="Chart" component={ChartContainer} />
+    &#x3C;/Route>
+  &#x3C;/Router>
+)
+</code></pre>
+<p>Then for navigation I need to modify the navbar file which is already inside component folder.(this component is included in main.js because it should not be reloaded based on the routes):</p>
+<pre><code class="language-js">var React = require('react')
+var ReactRouter = require('react-router')
+var textcolorblack = require('../styles').textcolorblack
+var bloglink = require('../styles').bloglink
+var Link = ReactRouter.Link
+
+function Navbar() {
+  return (
+    &#x3C;nav className="navbar navbar-default">
+      &#x3C;div className="container-fluid">
+        &#x3C;div className="navbar-header">
+          &#x3C;button
+            type="button"
+            className="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            &#x3C;span className="sr-only">Toggle navigation&#x3C;/span>
+            &#x3C;span className="icon-bar" />
+            &#x3C;span className="icon-bar" />
+            &#x3C;span className="icon-bar" />
+          &#x3C;/button>
+          &#x3C;p className="navbar-brand" style={textcolorblack}>
+            SenseHat Dashboard
+          &#x3C;/p>
+        &#x3C;/div>
+        &#x3C;div
+          id="bs-example-navbar-collapse-1"
+          className="collapse navbar-collapse"
+        >
+          &#x3C;ul className="nav navbar-nav">
+            &#x3C;li>
+              &#x3C;Link to="/">
+                Ambient&#x3C;span className="sr-only">(current)&#x3C;/span>
+              &#x3C;/Link>
+            &#x3C;/li>
+            &#x3C;li>
+              &#x3C;Link to="/control">Control&#x3C;/Link>
+            &#x3C;/li>
+            &#x3C;li>
+              &#x3C;Link to="/chart">Chart&#x3C;/Link>
+            &#x3C;/li>
+          &#x3C;/ul>
+          &#x3C;ul className="nav navbar-nav navbar-right">
+            &#x3C;li>
+              &#x3C;a
+                style={bloglink}
+                target="_blank"
+                href="https://iotdemos.wordpress.com"
+              >
+                Blog
+              &#x3C;/a>
+            &#x3C;/li>
+          &#x3C;/ul>
+        &#x3C;/div>
+      &#x3C;/div>
+    &#x3C;/nav>
+  )
+}
+module.exports = Navbar
+</code></pre>
+<p>Then I should create the containers related to my routes in the Containers folder. So I create AmbientContainer.js, ChartContainer.js and ControlContainer.js and also import it in my router.js:</p>
+<pre><code class="language-js">var AmbientContainer = require('../containers/AmbientContainer')
+var ControlContainer = require('../containers/ControlContainer')
+var ChartContainer = require('../containers/ChartContainer')
+</code></pre>
+<p>So inside each container I can include my component or components to show on each view. so for example I’ll add a component called “Ambient” inside my AmbientContainer and I’ll pass the the props related to each sensor to Ambient component (I get the value using a function in our helper, I do it in componentDidMount since it makes sure that the component is already rendered and then it updates the view ):</p>
+<pre><code class="language-js">var React = require('react')
+var Ambient = require('../components/Ambient')
+var SensehatHelper = require('../utils/SensehatHelper')
+
+var AmbientContainer = React.createClass({
+  getInitialState: function() {
+    return {
+      isLoading: true,
+      temperature: 0,
+      humidity: 0,
+      pressure: 0,
+    }
+  },
+  componentDidMount: function() {
+    SensehatHelper.getAmbientValues().then(
+      function(result) {
+        this.setState({
+          isLoading: false,
+          temperature: result.data.temperature,
+          humidity: result.data.humidity,
+          pressure: result.data.pressure,
+        })
+      }.bind(this)
+    )
+  },
+  render: function() {
+    return (
+      &#x3C;Ambient
+        isLoading={this.state.isLoading}
+        temperature={this.state.temperature}
+        humidity={this.state.humidity}
+        pressure={this.state.pressure}
+      />
+    )
+  },
+})
+
+module.exports = AmbientContainer
+</code></pre>
+<p>Then we make a file called “Ambient” inside the component folder and we receive the props that AmbientContainer sent to that. In Addition we pass these props to our sub modules which we want to create later show the visual value of sensor(We call them Monitor Widget</p>
+<pre><code class="language-js">var React = require('react')
+var MonitorWidget = require('./MonitorWidget')
+var Widgetwrapper = require('./Widgetwrapper')
+var MainContainer = require('./MainContainer')
+
+function Ambient(props) {
+  return (
+    &#x3C;MainContainer>
+      &#x3C;Widgetwrapper>
+        &#x3C;MonitorWidget
+          panel_tile="Temperature"
+          panel_content={props.temperature}
+          panel_icon="thermometer"
+          unit="°C"
+        />
+      &#x3C;/Widgetwrapper>
+      &#x3C;Widgetwrapper>
+        &#x3C;MonitorWidget
+          panel_tile="Humidity"
+          panel_content={props.humidity}
+          panel_icon="tint"
+          unit="%"
+        />
+      &#x3C;/Widgetwrapper>
+      &#x3C;Widgetwrapper>
+        &#x3C;MonitorWidget
+          panel_tile="Pressure"
+          panel_content={props.pressure}
+          panel_icon="tachometer"
+          unit="hPa"
+        />
+      &#x3C;/Widgetwrapper>
+    &#x3C;/MainContainer>
+  )
+}
+
+module.exports = Ambient
+</code></pre>
+<p>You can see that there are also two other tags, MainContainer and Widgetwrapper. these two are already in skeleton project since we use them in all part of the dashboard. Basically these two are the bootstrap frames or container for our widget or any element we want to visualize. for example the Widgetwrapper is simple bootstrap div with exact size. like this:</p>
+<pre><code class="language-js">var React = require('react')
+var PropTypes = React.PropTypes
+
+function WidgetWrapper(props) {
+  return &#x3C;div className="col-sm-4 ">{props.children}&#x3C;/div>
+}
+module.exports = WidgetWrapper
+</code></pre>
+<p>Also, you can see that I have put three props in each MonitorWidget tag: name of the sensor, value which we get from container, unit of the value and also dedicated icon. I use the icon to make my dashboard a little bit nicer, so I like the "Font Awesome" library and I have used it before in Angular1 and also JS plain projects and now I’ll use it also in my React project.(the name of the icon is in their website) I have already put the dependency for Font Awesome in out package.json.
+Next we gonna create out MonitorWidget file in the components and implement our widget using props. Remember to import Font Awesome to use it. Also, I have already put my CSS in the skeleton, in that I have provide a class for circle and other things that I use for visualization part.</p>
+<pre><code class="language-js">var React = require('react')
+var transparentBg = require('../styles').transparentBg
+var FontAwesome = require('react-fontawesome')
+
+function MonitorWidget(props) {
+  var inverse = true
+  return (
+    &#x3C;div className="jumbotron col-sm-12 text-center" style={transparentBg}>
+      &#x3C;div className="circle">
+        &#x3C;p>
+          &#x3C;FontAwesome name={props.panel_icon} size="4x" />
+          &#x3C;h2>
+            {props.panel_content} {props.unit}
+          &#x3C;/h2>
+        &#x3C;/p>
+      &#x3C;/div>
+    &#x3C;/div>
+  )
+}
+
+module.exports = MonitorWidget
+</code></pre>
+<p>So my widget would be something like this:</p>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/sensehat-react-2-8d52888cf54dded7080972a4fc0eb970-a10ee.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 336px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 83.63095238095238%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAd6VFFAUH//EABcQAAMBAAAAAAAAAAAAAAAAAAABITD/2gAIAQEAAQUCFcP/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAbEAACAQUAAAAAAAAAAAAAAAAAATERICFBYf/aAAgBAQABPyGRsuCIFRbt/9oADAMBAAIAAwAAABCsDwD/xAAWEQADAAAAAAAAAAAAAAAAAAARICH/2gAIAQMBAT8QgT//xAAWEQEBAQAAAAAAAAAAAAAAAAARASD/2gAIAQIBAT8Qq4//xAAbEAEAAgMBAQAAAAAAAAAAAAABABEhMUEQUf/aAAgBAQABPxANnXCEKCWqxi4uSDo64yg4N/CBdqZfDz//2Q=='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="sensehat react 2"
+        title=""
+        src="/static/sensehat-react-2-8d52888cf54dded7080972a4fc0eb970-a10ee.jpg"
+        srcset="/static/sensehat-react-2-8d52888cf54dded7080972a4fc0eb970-f7a23.jpg 148w,
+/static/sensehat-react-2-8d52888cf54dded7080972a4fc0eb970-a1f56.jpg 295w,
+/static/sensehat-react-2-8d52888cf54dded7080972a4fc0eb970-a10ee.jpg 336w"
+        sizes="(max-width: 336px) 100vw, 336px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<p>and I have used same component for other 2 sensors and as you have already seen, I just passed different props to same component. so my Ambient page would be like this:</p>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/sensehat-react-3-fc37905851ee090b16d73f1bd19ceedf-96788.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 28.51851851851852%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAGABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB34FB/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAGBAAAgMAAAAAAAAAAAAAAAAAAAEQITH/2gAIAQEAAT8hhZZ//9oADAMBAAIAAwAAABBwD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAQACAwEAAAAAAAAAAAAAAAEAESExcUH/2gAIAQEAAT8QDkBB1fIMMF9an//Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="sensehat react 3"
+        title=""
+        src="/static/sensehat-react-3-fc37905851ee090b16d73f1bd19ceedf-f8fb9.jpg"
+        srcset="/static/sensehat-react-3-fc37905851ee090b16d73f1bd19ceedf-e8976.jpg 148w,
+/static/sensehat-react-3-fc37905851ee090b16d73f1bd19ceedf-63df2.jpg 295w,
+/static/sensehat-react-3-fc37905851ee090b16d73f1bd19ceedf-f8fb9.jpg 590w,
+/static/sensehat-react-3-fc37905851ee090b16d73f1bd19ceedf-85e3d.jpg 885w,
+/static/sensehat-react-3-fc37905851ee090b16d73f1bd19ceedf-96788.jpg 1080w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<p>I do the same procedure for control, so I make a ControlContainer, and then inside that Control component and then I implement my widgets and include it in the control view. For coloring the LED, let’s put 4 buttons: Red, blue, green and one for clearing the LED and using API server, everytime we click on the button, we call the specific API depends on the button using the helper file.</p>
+<pre><code class="language-js">var React = require('react')
+var SensehatHelper = require('../utils/SensehatHelper')
+
+function SwitchOnOff(props) {
+  handleClick = function() {
+    console.log(props.button_label)
+    SensehatHelper.setLEDRGB(props.button_label.toLowerCase())
+  }
+  return (
+    &#x3C;button
+      type="button"
+      className={props.button_type}
+      onClick={this.handleClick}
+    >
+      {props.button_label}
+    &#x3C;/button>
+  )
+}
+module.exports = SwitchOnOff
+</code></pre>
+<p>Cool! I also build a component for sending a string to API, for showing on Sensehat LED and name this module InputWidget.</p>
+<pre><code class="language-js">var React = require('react')
+var styles = require('../styles')
+var SensehatHelper = require('../utils/SensehatHelper')
+
+function InputWidget(props) {
+  this.state = {
+    inputValue: '',
+  }
+  updateInputValue = function(evt) {
+    this.state.inputValue = evt.target.value
+  }
+  handleClick = function() {
+    console.log(this.state.inputValue)
+    SensehatHelper.setLEDMessage(this.state.inputValue)
+  }
+  return (
+    &#x3C;div className="input-group">
+      &#x3C;input
+        type="text"
+        className="form-control"
+        placeholder={props.placeholder}
+        onChange={this.updateInputValue}
+      />
+      &#x3C;span className="input-group-btn">
+        &#x3C;button
+          className="btn btn-default"
+          type="submit"
+          onClick={this.handleClick}
+        >
+          {props.button_name}
+        &#x3C;/button>
+      &#x3C;/span>
+    &#x3C;/div>
+  )
+}
+module.exports = InputWidget
+</code></pre>
+<p>Now I can build up my control view using these components:
+(four button components with different props, one pure img tag and one Input Widget</p>
+<pre><code class="language-js">var React = require('react')
+var transparentBg = require('../styles').transparentBg
+var MainContainer = require('./MainContainer')
+var PanelWrapper = require('./PanelWrapper')
+var ImageWrapper = require('./ImageWrapper')
+var SwitchOnOff = require('./SwitchOnOff')
+var sensehatImage = require('../images/sensehat2.png')
+var InputWidget = require('./InputWidget')
+
+var Control = React.createClass({
+  render: function() {
+    return (
+      &#x3C;MainContainer>
+        &#x3C;PanelWrapper header="SenseHat LED Color">
+          &#x3C;SwitchOnOff
+            button_label="Clear"
+            button_type="btn btn-lg btn-default btn-block"
+          />
+          &#x3C;SwitchOnOff
+            button_label="Red"
+            button_type="btn btn-lg btn-danger btn-block"
+          />
+          &#x3C;SwitchOnOff
+            button_label="Green"
+            button_type="btn btn-lg btn-success btn-block"
+          />
+          &#x3C;SwitchOnOff
+            button_label="Blue"
+            button_type="btn btn-lg btn-primary btn-block"
+          />
+        &#x3C;/PanelWrapper>
+        &#x3C;ImageWrapper>
+          &#x3C;img src={sensehatImage} className="img-responsive center-block" />
+        &#x3C;/ImageWrapper>
+        &#x3C;PanelWrapper header="Send to LED">
+          &#x3C;InputWidget placeholder="write a message..." button_name="Send" />
+        &#x3C;/PanelWrapper>
+      &#x3C;/MainContainer>
+    )
+  },
+})
+module.exports = Control
+</code></pre>
+<p>My final control page would be something like this:</p>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/sensehat-react-4-25b3725b3274447f50a64aedef49d7ca-96788.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 590px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 36.01851851851852%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHYgSwF/8QAGBABAQADAAAAAAAAAAAAAAAAAgABAxL/2gAIAQEAAQUC5dqCOL//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAbEAAABwEAAAAAAAAAAAAAAAAAAQIQERIyof/aAAgBAQAGPwLfAdlS3//EABsQAAEEAwAAAAAAAAAAAAAAAAEAECExEUFR/9oACAEBAAE/ITNDB0lyU9pv/9oADAMBAAIAAwAAABD3z//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/EIf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAZEAEAAwEBAAAAAAAAAAAAAAABABExIVH/2gAIAQEAAT8QZUoEBTc6MFURJ04zso8n/9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="sensehat react 4"
+        title=""
+        src="/static/sensehat-react-4-25b3725b3274447f50a64aedef49d7ca-f8fb9.jpg"
+        srcset="/static/sensehat-react-4-25b3725b3274447f50a64aedef49d7ca-e8976.jpg 148w,
+/static/sensehat-react-4-25b3725b3274447f50a64aedef49d7ca-63df2.jpg 295w,
+/static/sensehat-react-4-25b3725b3274447f50a64aedef49d7ca-f8fb9.jpg 590w,
+/static/sensehat-react-4-25b3725b3274447f50a64aedef49d7ca-85e3d.jpg 885w,
+/static/sensehat-react-4-25b3725b3274447f50a64aedef49d7ca-96788.jpg 1080w"
+        sizes="(max-width: 590px) 100vw, 590px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<p>I arrive at the difficult point… live chart
+I like D3 Library because it is very clean and very simple to use so I use D3 chart to make my chart view. I make a component and name it D3chartWidget. In this one I should update the chart every second so I need to call the API every second and add the value to an array which I show it on the chart:</p>
+<pre><code class="language-js">var React = require('react')
+var LineChart = require('react-d3-basic').LineChart
+var core = require('react-d3-core')
+var SensehatHelper = require('../utils/SensehatHelper')
+
+var D3chartWidget = React.createClass({
+  updateChart: function() {
+    SensehatHelper.getAmbientValues().then(
+      function(result) {
+        if (this.props.sensor == 'temperature') {
+          this.setState({
+            chartData: this.state.chartData.concat([
+              {
+                sensor: result.data.temperature,
+                date: new Date(),
+              },
+            ]),
+          })
+        } else if (this.props.sensor == 'humidity') {
+          this.setState({
+            chartData: this.state.chartData.concat([
+              {
+                sensor: result.data.humidity,
+                date: new Date(),
+              },
+            ]),
+          })
+        } else {
+          this.setState({
+            chartData: this.state.chartData.concat([
+              { sensor: result.data.pressure, date: new Date() },
+            ]),
+          })
+        }
+      }.bind(this)
+    )
+  },
+  getRandomInt: function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  },
+  getInitialState: function() {
+    return {
+      chartData: [],
+    }
+  },
+  componentDidMount: function() {
+    this.intervalId = setInterval(() => this.updateChart(), 1000)
+    this.setState({ intervalId: this.intervalId })
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.state.intervalId)
+  },
+  render: function() {
+    var width = 600
+    var height = 300
+    var margins = { left: 50, right: 20, top: 20, bottom: 60 }
+    var title = 'Title'
+    var parseDate = d3.time.format('%YM%m').parse
+    xDomain = d3.extent(this.state.chartData, function(d) {
+      return x(d)
+    })
+    xRange = [0, width - margins.left - margins.right]
+    ;(xScale = 'time'), (xLabel = 'Time')
+
+    // chart series,
+    // field: is what field your data want to be selected
+    // name: the name of the field that display in legend
+    // color: what color is the line
+    chartSeries = [
+      {
+        field: 'sensor',
+        name: this.props.sensor,
+        color: this.props.color,
+      },
+    ]
+    // your x accessor
+    x = function(d) {
+      return d.date
+    }
+
+    return (
+      &#x3C;LineChart
+        margins={margins}
+        title={title}
+        data={this.state.chartData}
+        width={width}
+        height={height}
+        chartSeries={chartSeries}
+        x={x}
+        xScale={xScale}
+        xLabel={xLabel}
+        xDomain={xDomain}
+        xRange={xRange}
+        showXGrid={true}
+        showYGrid={false}
+      />
+    )
+  },
+})
+module.exports = D3chartWidget
+</code></pre>
+<p>Then I will use this component in my container. The nice thing about React in this component is that I just can add a whole chart by adding just one line to the other view and maybe later I use it in another dashboard.</p>
+<p>You can find the whole project <a href="https://github.com/farminf/sensehat-react">HERE</a> in my GitHub page and feel free to contribute or if there is a bug please let me know.</p></div></div></div></div></div></div></div></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-470f32dd49c23d29b34d.js","107818501498521":"component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","162898551421021":"component---src-pages-404-js-4503918ea3a16cfcdb75.js","35783957827783":"component---src-pages-index-js-0e7887491c4f284e066f.js","218538773642512":"component---src-pages-page-2-js-65f0147ecb0dc4da2a2b.js","60335399758886":"path----55c5d871200ea0553d87.js","242960317512950":"path---docker-node-1b23d78858d3daff1679.js","229854666947949":"path---serverless-aws-e7fce611b1d63b808e89.js","94803894866459":"path---sensehat-react-a90460329a0a5b9d170b.js","60135101834148":"path---sensehat-dashboard-2-60b4f1e108135ec80940.js","116538559223856":"path---sensehat-dashboard-1-8dc421eb67e4e4a82a78.js","179064064692867":"path---elasticserach-kibana-e8e96985e5f38702dbea.js","224231219391557":"path---sensehat-aws-iot-66ddecb9fde95253a8ed.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","142629428675168":"path---index-eea85d5ff0838326e381.js","135728916539164":"path---page-2-a0e39f21c11f6a62c5ab.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-4f94b4340e387a38fc90.js"}/*]]>*/</script><script>/*<![CDATA[*/["/blog/commons-5a98e6e60a10e1028b17.js","/blog/app-470f32dd49c23d29b34d.js","/blog/path---sensehat-react-a90460329a0a5b9d170b.js","/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><link rel="preload" href="/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js" as="script"/><link rel="preload" href="/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js" as="script"/><link rel="preload" href="/blog/path---docker-node-1b23d78858d3daff1679.js" as="script"/><link rel="preload" href="/blog/app-470f32dd49c23d29b34d.js" as="script"/><link rel="preload" href="/blog/commons-5a98e6e60a10e1028b17.js" as="script"/><title data-react-helmet="true">STA - Docker-izing a Node Web app (NPM/Webpack) </title><meta data-react-helmet="true" name="description" content="Farmin Blog Site"/><meta data-react-helmet="true" name="keywords" content="farmin, blog"/><style id="gatsby-inlined-css">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:112.5%/1.45em georgia,serif;box-sizing:border-box;overflow-y:scroll}*,:after,:before{box-sizing:inherit}body{color:rgba(0,0,0,.8);font-family:georgia,serif;font-weight:400;word-wrap:break-word;-webkit-font-kerning:normal;font-kerning:normal;-ms-font-feature-settings:"kern","liga","clig","calt";-webkit-font-feature-settings:"kern","liga","clig","calt";font-feature-settings:"kern","liga","clig","calt","kern"}img{max-width:100%;margin:0 0 1.45rem;padding:0}h1{font-size:2.25rem}h1,h2{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h2{font-size:1.62671rem}h3{font-size:1.38316rem}h3,h4{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h4{font-size:1rem}h5{font-size:.85028rem}h5,h6{margin:0 0 1.45rem;padding:0;color:inherit;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;line-height:1.1}h6{font-size:.78405rem}hgroup{margin:0 0 1.45rem;padding:0}ol,ul{margin:0 0 1.45rem 1.45rem;padding:0;list-style-position:outside;list-style-image:none}dd,dl,figure,p{margin:0 0 1.45rem;padding:0}pre{padding:0;font-size:.85rem;line-height:1.42;background:rgba(0,0,0,.04);border-radius:3px;overflow:auto;word-wrap:normal;padding:1.45rem}pre,table{margin:0 0 1.45rem}table{padding:0;font-size:1rem;line-height:1.45rem;border-collapse:collapse;width:100%}fieldset{margin:0 0 1.45rem;padding:0}blockquote{margin:0 1.45rem 1.45rem;padding:0}form,iframe,noscript{margin:0 0 1.45rem;padding:0}hr{margin:0 0 calc(1.45rem - 1px);padding:0;background:rgba(0,0,0,.2);border:none;height:1px}address{margin:0 0 1.45rem;padding:0}b,dt,strong,th{font-weight:700}li{margin-bottom:.725rem}ol li,ul li{padding-left:0}li>ol,li>ul{margin-left:1.45rem;margin-bottom:.725rem;margin-top:.725rem}blockquote :last-child,li :last-child,p :last-child{margin-bottom:0}li>p{margin-bottom:.725rem}code,kbd,samp{font-size:.85rem;line-height:1.45rem}abbr,abbr[title],acronym{border-bottom:1px dotted rgba(0,0,0,.5);cursor:help}abbr[title]{text-decoration:none}td,th,thead{text-align:left}td,th{border-bottom:1px solid rgba(0,0,0,.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding:.725rem .96667rem calc(.725rem - 1px)}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}code,tt{background-color:rgba(0,0,0,.04);border-radius:3px;font-family:SFMono-Regular,Consolas,Roboto Mono,Droid Sans Mono,Liberation Mono,Menlo,Courier,monospace;padding:0;padding-top:.2em;padding-bottom:.2em}pre code{background:none;line-height:1.42}code:after,code:before,tt:after,tt:before{letter-spacing:-.2em;content:" "}pre code:after,pre code:before,pre tt:after,pre tt:before{content:""}@media only screen and (max-width:480px){html{font-size:100%}}*{background:#f5f5f5;color:#000}body,html{height:100%}body{padding:20px}h1{font-size:1.5rem}div,p{font-size:16px}div.blog-post-preview{border-bottom:2px solid #e6e6e6;padding-top:1rem;padding-bottom:1rem;margin-bottom:1rem}h1>*{font-size:1.2rem;-webkit-text-decoration-line:none;text-decoration-line:none}h2{font-size:.8rem!important;font-weight:100!important}</style></head><body><div id="___gatsby"><div data-reactroot="" data-reactid="1" data-react-checksum="2055424770"><!-- react-empty: 2 --><div style="background:#f5f5f5;margin-bottom:3rem;border-bottom:2px solid #e6e6e6;" data-reactid="3"><div style="margin:0 auto;max-width:1080px;padding:1.45rem 1.0875rem;" data-reactid="4"><h1 style="margin:0;text-align:center;font-size:18px;" data-reactid="5"><a style="color:black;text-decoration:none;" href="/blog/" data-reactid="6">Spare Time Adventures</a></h1></div></div><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;" data-reactid="7"><div style="margin:0 auto;max-width:1080px;display:flex;flex-direction:row;justify-content:space-between;height:100%;padding:25px;" data-reactid="8"><div style="flex:1;" data-reactid="9"><div class="blog-post-container" data-reactid="10"><!-- react-empty: 11 --><div class="blog-post" data-reactid="12"><h1 data-reactid="13">Docker-izing a Node Web app (NPM/Webpack) </h1><div class="blog-post-content" data-reactid="14"><p>After implementation of my web app for Raspberry SenseHat with ReactJs, I decided to dockerize it so maybe later I run it on AWS ECS (Amazon EC2 Container Service).(Actually not this web app but other project that I have, should be run on AWS ECS)</p>
+<p>First I want to use Docker Hub to push my image and later I can pull from it wherever I want to (Apparently it is GitHub for docker images). Therefore, I created an account on Docker Hub and I created a repository named “sensehat-react”. Later when I create my docker image I’ll push it to this repository.
+Let’s see what I have:
+I have a Node web app which uses webpack as a loader and “npm to install my needed modules and I run it.
+This is my exact <strong>package.json</strong>:</p>
+<pre><code class="language-json">{
+  "name": "sensehat-react",
+  "version": "1.0.0",
+  "description": "Dashboard for SenseHat",
+  "main": "index.js",
+  "scripts": {
+    "production": "webpack -p",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/farminf/sensehat-react.git"
+  },
+  "keywords": ["SenseHat", "reactjs", "bootstrap", "dashboard"],
+  "author": "IoTGuy &#x3C;iotdemos16@gmail.com> (https://iotdemos.wordpress.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/farminf/sensehat-react/issues"
+  },
+  "homepage": "https://github.com/farminf/sensehat-react#readme",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-bootstrap-switch": "^15.5.0",
+    "react-d3-basic": "^1.6.11",
+    "react-d3-core": "^1.3.9",
+    "react-dom": "^15.4.2",
+    "react-fontawesome": "^1.5.0",
+    "react-icons": "^2.2.3",
+    "react-router": "^3.0.2",
+    "react-rt-chart": "^1.3.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "file-loader": "^0.10.1",
+    "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.3.0",
+    "install": "^0.8.7",
+    "npm": "^4.3.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
+</code></pre>
+<p>I need to build my Dockerfile based on my settings:</p>
+<ul>
+<li>My node project folder doesn’t have node_module folder(because it is clean: just cloned from GitHub)</li>
+<li>I need to do “npm install” to download my libraries in node_module folder</li>
+<li>Then for Running I need to run “npm start”</li>
+<li>Unfortunately, I am behind the proxy so I should think about that too (Damn proxy which makes everything complicated)</li>
+</ul>
+<p>I have written my Dockerfile and put it in the root folder:</p>
+<pre><code class="language-bash">FROM node:6.10
+
+RUN mkdir /sensehat-react-app
+COPY . /sensehat-react-app
+WORKDIR /sensehat-react-app
+
+RUN npm config set proxy http://proxy-ip:proxy-port
+RUN npm config set https-proxy http://proxy-ip:proxy-port
+#If there is some dependency that uses not npm proxy but system one
+#you need to export the proxy here too
+
+RUN npm install
+
+EXPOSE 8080
+
+CMD [ "npm", "start" ]
+</code></pre>
+<p>Great, I have everythings ready to build my docker image and run it locally so I can be sure that it is working.
+After installation of Docker (<a href="https://docs.docker.com/engine/installation/linux/ubuntu/#docker-ee-customers">Ubuntu installation</a>) I go to terminal and my root folder.
+I build my docker image:</p>
+<pre><code class="language-bash">sudo docker build -t $docker_hub_username/$repository_name:$tag .
+</code></pre>
+<p>then I run it in the way that I can browse it on <a href="http://localhost:69160">http://localhost:69160</a></p>
+<pre><code class="language-bash">sudo docker run -d -p 49160:8080 $docker_hub_username/$repository_name:$tag
+</code></pre>
+<p>I test it and I browse to ‘<a href="http://localhost:69160%E2%80%98">http://localhost:69160‘</a> and surprisingly I get “Connection reset error” 😦</p>
+<p>Then I remember that in my package.json file, in start script I haven’t indicate that Webpack web-server should be accessible from the network. I change the start script to:</p>
+<pre><code>webpack-dev-server --port 8080 --host 0.0.0.0
+</code></pre>
+<p>and save it… but the thing is I update my local code and not my Docker container so I have 2 ways to do that, I can copy just this file to my docker using ‘docker cp’ command or I can stop the current image, remove it and re-do the build part. I choose second one:</p>
+<pre><code class="language-bash">docker ps
+#to see my dockers running
+docker stop $Container ID
+docker images
+#See images id
+Docker rmi -f $Image ID
+</code></pre>
+<p>and re-do the build and run with new tag. Perfect now I can browse to my web app. I am happy 🙂</p>
+<p>ok let’s put the docker on the Docker Hub using the properties of my Docker hub account then:</p>
+<pre><code class="language-bash">docker tag $image_id $userID/$RepositoryName:$tag
+sudo docker push $userID/$RepositoryName:$tag
+</code></pre>
+<p>first time I got the error: ‘denied: requested access to the resource is denied’ but then I did</p>
+<pre><code class="language-bash">docker login
+#It asks you for username and password of Docker Hub
+</code></pre>
+<p>And again push, and It upload it on my Docker Hub 🙂</p>
+<p>Perfect, so I have my web app image there and wherever which it has docker running I can run my app, I just need to pull it and run it, no need to setup anything or install anything.
+Next I try to run it on my AWS ECS service…</p></div></div></div></div></div></div></div></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"231608221292675":"app-470f32dd49c23d29b34d.js","107818501498521":"component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","162898551421021":"component---src-pages-404-js-4503918ea3a16cfcdb75.js","35783957827783":"component---src-pages-index-js-0e7887491c4f284e066f.js","218538773642512":"component---src-pages-page-2-js-65f0147ecb0dc4da2a2b.js","60335399758886":"path----55c5d871200ea0553d87.js","242960317512950":"path---docker-node-1b23d78858d3daff1679.js","229854666947949":"path---serverless-aws-e7fce611b1d63b808e89.js","94803894866459":"path---sensehat-react-a90460329a0a5b9d170b.js","60135101834148":"path---sensehat-dashboard-2-60b4f1e108135ec80940.js","116538559223856":"path---sensehat-dashboard-1-8dc421eb67e4e4a82a78.js","179064064692867":"path---elasticserach-kibana-e8e96985e5f38702dbea.js","224231219391557":"path---sensehat-aws-iot-66ddecb9fde95253a8ed.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","142629428675168":"path---index-eea85d5ff0838326e381.js","135728916539164":"path---page-2-a0e39f21c11f6a62c5ab.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-4f94b4340e387a38fc90.js"}/*]]>*/</script><script>/*<![CDATA[*/["/blog/commons-5a98e6e60a10e1028b17.js","/blog/app-470f32dd49c23d29b34d.js","/blog/path---docker-node-1b23d78858d3daff1679.js","/blog/component---src-templates-blog-post-js-d2c64f6a3b997dfac6bf.js","/blog/component---src-layouts-index-js-4f94b4340e387a38fc90.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>
